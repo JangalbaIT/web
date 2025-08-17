@@ -11,7 +11,7 @@
     <!-- Open Graph pro sdílení na sociálních sítích -->
     <meta property="og:title" content="PhotoGalbova | Sabina Galbová, Fotografka & Stylistka" />
     <meta property="og:description" content="Zachycuji vaše příběhy objektivem a podtrhuji vaši přirozenou krásu. Objevte mé služby." />
-    <meta property="og:image" content="https://vas-web.cz/images/og-image.jpg" />
+    <meta property="og:image" content="https://placehold.co/1200x630/f0e4d6/333333?text=Galbova.Photo" />
     <meta property="og:url" content="https://vas-web.cz" />
     <meta property="og:type" content="website" />
 
@@ -22,16 +22,364 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
 
-    <!-- Vlastní styl -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Vložené CSS styly pro responzivitu a vzhled -->
+    <style>
+        :root {
+            --primary-color: #333;
+            --secondary-color: #f0e4d6;
+            --accent-color: #a88b79;
+            --text-color: #4a4a4a;
+            --bg-color: #ffffff;
+            --font-main: 'Montserrat', sans-serif;
+            --font-headings: 'Playfair Display', serif;
+        }
+
+        /* Základní reset a nastavení */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-headings);
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .content-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Navigace */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: background-color 0.3s;
+        }
+
+        .nav-logo {
+            font-family: var(--font-headings);
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: var(--primary-color);
+        }
+
+        /* Hero sekce */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            background: url('https://placehold.co/1920x1080/a88b79/ffffff?text=Hero+Image') no-repeat center center/cover;
+        }
+        
+        #particle-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hero-text {
+            z-index: 2;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        /* Sekce "O mně" */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .about-photo {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid var(--secondary-color);
+        }
+
+        /* Galerie */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery a:hover img {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Ceníky */
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .pricing-card {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 1rem 0;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .pricing-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #8a6f5e;
+        }
+
+        /* Kontakt */
+        #kontakt {
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-info i {
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+        
+        .social-media {
+            margin-top: 2rem;
+        }
+        
+        .social-media a {
+            font-size: 2rem;
+            margin: 0 1rem;
+            color: var(--primary-color);
+            transition: color 0.3s;
+        }
+        
+        .social-media a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        footer a {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+
+        /* --- RESPONZIVNÍ STYLY --- */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 3rem 1rem;
+            }
+
+            /* Mobilní navigace */
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 65px; /* Výška navigace */
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: 0.3s;
+                gap: 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                padding: 1.5rem 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            /* Ostatní sekce */
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .pricing-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- jQuery a Lightbox -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-    <script src="script.js" defer></script>
-    <script src="canvas.js" defer></script>
-
     <!-- HEADER -->
     <header>
         <nav class="navbar" role="navigation" aria-label="Hlavní navigace">
@@ -42,6 +390,11 @@
                 <li class="nav-item"><a href="#kosmetika" class="nav-link">Kosmetika</a></li>
                 <li class="nav-item"><a href="#kontakt" class="nav-link">Kontakt</a></li>
             </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </nav>
     </header>
 
@@ -60,7 +413,7 @@
         <section id="o-mne" class="content-section">
             <h2>Kdo jsem</h2>
             <div class="about-content">
-                <img src="profil.jpg" alt="Fotografie Sabiny Galbové" class="about-photo" loading="lazy">
+                <img src="https://placehold.co/300x300/f0e4d6/333333?text=Sabina" alt="Fotografie Sabiny Galbové" class="about-photo" loading="lazy">
                 <p>
                     Jmenuji se Sabina a bydlím v krásných Svitavách. Focení pro mě není jen práce, ale především vášeň a způsob, jak vyprávět příběhy beze slov. S mým věrným fotoaparátem Canon se snažím zachytit emoce a atmosféru. Mou druhou vášní je podtrhovat přirozenou krásu, proto jsem si udělala certifikovaný kurz na laminaci obočí a lash lifting, abych vám mohla nabídnout kompletní péči.
                 </p>
@@ -71,21 +424,21 @@
         <section id="portfolio" class="content-section">
             <h2>Moje práce s fotoaparátem</h2>
             <div class="gallery">
-                <a href="aa.jpg" data-lightbox="portfolio" data-title="Portrét"><img src="aa.jpg" alt="Portrét" loading="lazy"></a>
-                <a href="aaa.jpg" data-lightbox="portfolio" data-title="Portrét"><img src="aaa.jpg" alt="Portrét" loading="lazy"></a>
-                <a href="aaaa.jpg" data-lightbox="portfolio" data-title="Portrét"><img src="aaaa.jpg" alt="Portrét" loading="lazy"></a>
-                <a href="aaaaa.jpg" data-lightbox="portfolio" data-title="Portrét"><img src="aaaaa.jpg" alt="Portrét" loading="lazy"></a>
-                <a href="bb.jpg" data-lightbox="portfolio" data-title="Portrét"><img src="bb.jpg" alt="Městská fotografie" loading="lazy"></a>
+                <a href="https://placehold.co/800x600/a88b79/ffffff?text=Foto+1" data-lightbox="portfolio" data-title="Portrét"><img src="https://placehold.co/400x300/a88b79/ffffff?text=Foto+1" alt="Portrét" loading="lazy"></a>
+                <a href="https://placehold.co/800x600/b89b89/ffffff?text=Foto+2" data-lightbox="portfolio" data-title="Portrét"><img src="https://placehold.co/400x300/b89b89/ffffff?text=Foto+2" alt="Portrét" loading="lazy"></a>
+                <a href="https://placehold.co/800x600/c8ab99/ffffff?text=Foto+3" data-lightbox="portfolio" data-title="Portrét"><img src="https://placehold.co/400x300/c8ab99/ffffff?text=Foto+3" alt="Portrét" loading="lazy"></a>
+                <a href="https://placehold.co/800x600/d8bbab/ffffff?text=Foto+4" data-lightbox="portfolio" data-title="Portrét"><img src="https://placehold.co/400x300/d8bbab/ffffff?text=Foto+4" alt="Portrét" loading="lazy"></a>
+                <a href="https://placehold.co/800x600/e8cbbf/ffffff?text=Foto+5" data-lightbox="portfolio" data-title="Portrét"><img src="https://placehold.co/400x300/e8cbbf/ffffff?text=Foto+5" alt="Městská fotografie" loading="lazy"></a>
             </div>
         </section>
 
         <!-- CENÍK FOTO -->
-        <section id="cenik-foto" class="content-section">
+        <section id="cenik-foto" class="content-section" style="background-color: #f9f9f9;">
             <h2>Ceník fotografických služeb</h2>
             <div class="pricing-container">
                 <div class="pricing-card">
                     <h3>Portrétní focení</h3>
-                    <p class="price">600Kč</p>
+                    <p class="price">600 Kč</p>
                     <ul>
                         <li>Půl hodiny focení</li>
                         <li>10 upravených fotografií</li>
@@ -96,7 +449,7 @@
                 </div>
                 <div class="pricing-card">
                     <h3>Rodinné / Párové</h3>
-                    <p class="price">700Kč</p>
+                    <p class="price">700 Kč</p>
                     <ul>
                         <li>Až 1 hodina focení</li>
                         <li>15 upravených fotografií</li>
@@ -122,19 +475,19 @@
         <!-- KOSMETIKA -->
         <section id="kosmetika" class="content-section">
             <h2>Kosmetické služby</h2>
-            <p class="section-intro">
+            <p class="section-intro" style="text-align: center; max-width: 800px; margin: 0 auto 2rem auto;">
                 Kromě zachycení vaší krásy objektivem vám ji mohu pomoci i podtrhnout. Jako certifikovaná stylistka nabízím profesionální úpravu obočí a řas, která zvýrazní vaše rysy a dodá vám sebevědomí na každý den – nebo jako dokonalou přípravu před focením.
             </p>
 
             <h3>Ukázky práce</h3>
             <div class="gallery">
-                <a href="" data-lightbox="kosmetika" data-title="Laminace obočí – před a po"><img src="" alt="Výsledek laminace obočí" loading="lazy"></a>
-                <a href="" data-lightbox="kosmetika" data-title="Lash lifting – přirozeně natočené řasy"><img src="" alt="Výsledek lash liftingu" loading="lazy"></a>
-                <a href="" data-lightbox="kosmetika" data-title="Detail na perfektně upravené obočí"><img src="" alt="Detail na obočí po laminaci" loading="lazy"></a>
-                <a href="" data-lightbox="kosmetika" data-title="Kombinace lash lifting a laminace obočí"><img src="" alt="Kombinovaná procedura řas a obočí" loading="lazy"></a>
+                <a href="https://placehold.co/800x600/f0e4d6/333333?text=Laminace" data-lightbox="kosmetika" data-title="Laminace obočí – před a po"><img src="https://placehold.co/400x300/f0e4d6/333333?text=Laminace" alt="Výsledek laminace obočí" loading="lazy"></a>
+                <a href="https://placehold.co/800x600/f2e6d8/333333?text=Lifting" data-lightbox="kosmetika" data-title="Lash lifting – přirozeně natočené řasy"><img src="https://placehold.co/400x300/f2e6d8/333333?text=Lifting" alt="Výsledek lash liftingu" loading="lazy"></a>
+                <a href="https://placehold.co/800x600/f4e8da/333333?text=Detail" data-lightbox="kosmetika" data-title="Detail na perfektně upravené obočí"><img src="https://placehold.co/400x300/f4e8da/333333?text=Detail" alt="Detail na obočí po laminaci" loading="lazy"></a>
+                <a href="https://placehold.co/800x600/f6eadc/333333?text=Kombinace" data-lightbox="kosmetika" data-title="Kombinace lash lifting a laminace obočí"><img src="https://placehold.co/400x300/f6eadc/333333?text=Kombinace" alt="Kombinovaná procedura řas a obočí" loading="lazy"></a>
             </div>
 
-            <h3 class="pricing-heading">Ceník kosmetických služeb</h3>
+            <h3 class="pricing-heading" style="text-align: center; margin-top: 3rem;">Ceník kosmetických služeb</h3>
             <div class="pricing-container">
                 <div class="pricing-card">
                     <h3>Laminace obočí</h3>
@@ -166,8 +519,8 @@
             <h2>Spojte se se mnou</h2>
             <p>Máte dotaz nebo si chcete rovnou rezervovat termín focení či kosmetiky? Napište mi!</p>
             <div class="contact-info">
-                <p><i class="fas fa-envelope"></i> <a href="mailto:.simonova222@seznam.cz">simonova222@seznam.cz</a></p>
-                <p><i class="fas fa-phone"></i> <a href="tel:+420123456789">+420737007174</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:simonova222@seznam.cz">simonova222@seznam.cz</a></p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+420737007174">+420 737 007 174</a></p>
                 <p><i class="fas fa-map-marker-alt"></i> Svitavy, Česká republika</p>
             </div>
             <div class="social-media">
@@ -181,9 +534,32 @@
     <footer>
         <p>&copy; 2025 PhotoGalbova | Vytvořil <a href="https://www.jangalba.eu" target="_blank" rel="noopener noreferrer">Jan Galba</a></p>
     </footer>
-    <script src="script.js"></script>
+
+    <!-- Skripty -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    
+    <!-- Ponechávám odkazy na vaše původní skripty, pokud obsahují další funkcionalitu -->
+    <script src="script.js" defer></script>
+    <script src="canvas.js" defer></script>
+
+    <!-- Vložený JavaScript pro mobilní menu -->
+    <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+        const navLinks = document.querySelectorAll(".nav-link");
+
+        // Otevření/zavření menu po kliknutí na hamburger
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        // Zavření menu po kliknutí na odkaz
+        navLinks.forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }));
+    </script>
 </body>
 </html>
-
-
-
