@@ -184,13 +184,14 @@
             gap: 2rem;
         }
 
-        .about-photo {
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 1%;
-            border: 5px solid var(--secondary-color);
-        }
+       .about-photo {
+    aspect-ratio: 1 / 1;  /* vždy čtverec */
+    width: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid var(--secondary-color);
+}
+
 
         /* Galerie */
         .gallery {
@@ -524,6 +525,7 @@
     </script>
 </body>
 </html>
+
 
 
 
